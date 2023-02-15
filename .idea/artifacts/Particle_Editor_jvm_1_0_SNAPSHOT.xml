@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Particle-Editor-jvm-1.0-SNAPSHOT">
+    <output-path>$PROJECT_DIR$/Particle-Editor/build/libs</output-path>
+    <root id="archive" name="Particle-Editor-jvm-1.0-SNAPSHOT.jar" />
+  </artifact>
+</component>
