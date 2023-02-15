@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Particle-Editor/Particle-Editor.iml" filepath="$PROJECT_DIR$/Particle-Editor/Particle-Editor.iml" />
       <module fileurl="file://$PROJECT_DIR$/ParticleEditor.iml" filepath="$PROJECT_DIR$/ParticleEditor.iml" />
     </modules>
   </component>
