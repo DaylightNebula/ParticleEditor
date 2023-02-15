@@ -7,6 +7,8 @@ Or an object renderer could be easily implemented to render a 3d object with a c
 === Todo List ===
 - [ ] Basic Editor
   - [ ] Top bar with an optional list of buttons
+    - [ ] Open project button
+    - [ ] Reload plugins button
   - [ ] File tree on the left side
   - [ ] Easy way to create overlay menus
   - [ ] Tab rendering
