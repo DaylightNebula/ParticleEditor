@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.Window
@@ -12,6 +14,8 @@ import androidx.compose.ui.window.application
 import daylightnebula.particle.editor.filetree.FileTreePage
 import daylightnebula.particle.editor.pages.FileViewer
 import daylightnebula.particle.editor.pages.TopBar
+import daylightnebula.particle.editor.pages.TopBarButton
+import daylightnebula.particle.editor.pages.TopBarButtonOption
 import java.io.File
 
 @Composable

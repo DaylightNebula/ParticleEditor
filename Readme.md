@@ -1,5 +1,5 @@
 The goal of this is to be a simple file editor with plugin options.
-This is meant to be a simple open source alternative to editors like VS Code and Flutter that could be used in both personal and commercial projects.
+This is meant to be a simple open source alternative to editors like VS Code and <insert jetbrains version> that could be used in both personal and commercial projects.
 
 For example, a plugin for json files could be easily added that would allow for completion and organize text by colors.
 Or an object renderer could be easily implemented to render a 3d object with a custom file type.
@@ -9,7 +9,7 @@ Or an object renderer could be easily implemented to render a 3d object with a c
   - [x] Top bar with an optional list of buttons
     - [x] Open project button
   - [x] File tree on the left side
-  - [ ] Easy way to create overlay menus
+  - [x] Easy way to create dropdown menus
   - [x] Tab rendering
     - [x] Tabbed file viewer
     - [x] Open from file tree

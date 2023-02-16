@@ -1,6 +1,8 @@
 package daylightnebula.particle.editor.pages
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -15,8 +17,11 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.ComposeWindow
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.AwtWindow
 import androidx.compose.ui.window.Window
 import daylightnebula.particle.editor.BasicColors
@@ -49,7 +54,9 @@ object TopBar {
                         .background(BasicColors.elementBackground)
                 ) {
                     item {
+                        // draw open button
                         IconButton(onClick = {
+                            // on click, open a file chooser
                             val chooser = JFileChooser()
                             chooser.fileSelectionMode = JFileChooser.DIRECTORIES_ONLY
                             chooser.showOpenDialog(ComposeWindow())
@@ -61,6 +68,8 @@ object TopBar {
                                 tint = BasicColors.foreground
                             )
                         }
+
+                        // reload the plugins
                         IconButton(onClick = { reloadPlugins() }) {
                             Icon(
                                 Icons.Filled.Refresh,
@@ -84,13 +93,51 @@ object TopBar {
                         .background(BasicColors.elementBackground)
                 ) {
                     items(buttons) { button ->
-                        IconButton(
-                            onClick = { button.onClick() },
-                            modifier = Modifier
-                                .fillMaxHeight()
-                                .width(40.dp)
-                        ) {
-                            Icon(button.icon, contentDescription = null, tint = BasicColors.foreground)
+                        // drop down menu expanded tracker
+                        var expanded by remember { mutableStateOf(false) }
+
+                        // create column to stack everything
+                        Column {
+                            // create icon button
+                            IconButton(
+                                onClick = { expanded = !expanded /*button.onClick()*/ },
+                                modifier = Modifier
+                                    .fillMaxHeight()
+                                    .width(40.dp)
+                            ) {
+                                Icon(button.icon, contentDescription = null, tint = BasicColors.foreground)
+                            }
+
+                            // drop down menu
+                            DropdownMenu(
+                                expanded = expanded,
+                                onDismissRequest = { expanded = false },
+                                modifier = Modifier
+                                    .background(BasicColors.highlightedElementBackground)
+                            ) {
+                                // for each given option, create a dropdown option for it
+                                button.options.forEach { option ->
+                                    DropdownMenuItem(
+                                        onClick = { option.onClick() },
+                                        modifier = Modifier
+                                            .background(BasicColors.highlightedElementBackground)
+                                            .wrapContentHeight()
+                                            .height(20.dp)
+                                            .fillMaxWidth()
+                                    ) {
+                                        Text(
+                                            text = option.text,
+                                            color = BasicColors.foreground,
+                                            modifier = Modifier
+                                                .clipToBounds(),
+                                            softWrap = true,
+                                            fontSize = 14.sp,
+                                            overflow = TextOverflow.Ellipsis,
+                                            maxLines = 1
+                                        )
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -106,4 +153,23 @@ object TopBar {
         println("TODO reload plugins")
     }
 }
-data class TopBarButton(val icon: ImageVector, val onClick: () -> Unit)
+data class TopBarButton(val icon: ImageVector, val options: Array<TopBarButtonOption>) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as TopBarButton
+
+        if (icon != other.icon) return false
+        if (!options.contentEquals(other.options)) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = icon.hashCode()
+        result = 31 * result + options.contentHashCode()
+        return result
+    }
+}
+data class TopBarButtonOption(val text: String, val onClick: () -> Unit)
