@@ -36,7 +36,7 @@ object FileTreePage {
         val openDirectories = remember { mutableListOf<String>() }
 
         // render the tree
-        val tree = FileTree(FileTreeFile(targetFile))
+        val tree = FileTree(targetFile)
 
         Box(
             modifier = Modifier

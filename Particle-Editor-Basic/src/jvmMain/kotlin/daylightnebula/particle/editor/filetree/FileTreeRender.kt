@@ -3,19 +3,21 @@ package daylightnebula.particle.editor.filetree
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import kotlinx.coroutines.CoroutineScope
+import daylightnebula.particle.editor.BasicColors
+import daylightnebula.particle.editor.pages.FileView
+import daylightnebula.particle.editor.pages.FileViewer
 import java.io.File
 
 class ExpandableFile(
-    val file: FileTreeFileInterface,
+    val file: File,
     val level: Int,
 ) {
     var children: List<ExpandableFile> by mutableStateOf(emptyList())
-    val canExpand: Boolean get() = file.hasChildren
+    val canExpand: Boolean get() = file.listFiles() != null && file.listFiles()!!.isNotEmpty()
 
     fun toggleExpanded() {
         children = if (children.isEmpty()) {
-            file.children
+            file.listFiles()!!
                 .map { ExpandableFile(it, level + 1) }
                 .sortedWith(compareBy({ it.file.isDirectory }, { it.file.name }))
                 .sortedBy { !it.file.isDirectory }
@@ -25,7 +27,7 @@ class ExpandableFile(
     }
 }
 
-class FileTree(root: FileTreeFileInterface) {
+class FileTree(root: File) {
     private val expandableRoot = ExpandableFile(root, 0).apply {
         toggleExpanded()
     }
@@ -57,7 +59,14 @@ class FileTree(root: FileTreeFileInterface) {
                     }
                 }
                 is ItemType.File -> {
+                    // try to find a preexisting view of this file
+                    var view = FileViewer.views.firstOrNull { it.path == file.file.path }
 
+                    if (view == null) {
+                        view = FileView(file.file.name, file.file.path, BasicColors.foreground, file.file.readText())
+                        FileViewer.views.add(view)
+                    }
+                    FileViewer.selectedView = view
                 }
             }
         }
@@ -79,24 +88,5 @@ class FileTree(root: FileTreeFileInterface) {
         val list = mutableListOf<Item>()
         addTo(list)
         return list
-    }
-}
-
-interface FileTreeFileInterface {
-    val name: String
-    val isDirectory: Boolean
-    val children: List<FileTreeFileInterface>
-    val hasChildren: Boolean
-
-    fun readLines(scope: CoroutineScope): List<String>
-}
-class FileTreeFile(private val file: File): FileTreeFileInterface {
-    override val name: String = file.name
-    override val isDirectory = file.isDirectory
-    override val children = file.listFiles()?.map { FileTreeFile(it) } ?: listOf()
-    override val hasChildren = file.listFiles() != null
-
-    override fun readLines(scope: CoroutineScope): List<String> {
-        return file.readLines()
     }
 }

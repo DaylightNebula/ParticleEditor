@@ -9,34 +9,21 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import daylightnebula.particle.editor.BasicColors
 
 object FileViewer {
 
-    private val views = mutableListOf(
-        FileView(
-            "bob.kt",
-            BasicColors.foreground,
-            "Hi my name\nis bob."
-        ),
-        FileView(
-            "helloWorld.kt",
-            BasicColors.foreground,
-            """
-                fun main() {
-                    println("Hello world!")
-                }
-            """.trimIndent()
-        )
-    )
+    val views = mutableStateListOf<FileView>()
+    var selectedView by mutableStateOf<FileView?>(null)
 
     @Composable
     fun drawFileViewer() {
-        var currentView by remember { mutableStateOf(views.first()) }
         // box containing everything
         Box(
             modifier = Modifier
@@ -55,9 +42,9 @@ object FileViewer {
                     items(views) { view ->
 
                         Button(
-                            onClick = { currentView = view },
+                            onClick = { selectedView = view },
                             colors = ButtonDefaults.buttonColors(
-                                backgroundColor = if (view == currentView) BasicColors.highlightedElementBackground else BasicColors.elementBackground
+                                backgroundColor = if (view == selectedView) BasicColors.highlightedElementBackground else BasicColors.elementBackground
                             ),
                             modifier = Modifier
                                 .padding(end = 5.dp)
@@ -71,7 +58,8 @@ object FileViewer {
                 }
 
                 // create box for the plugins to draw into
-                drawFileView(currentView)
+                if (selectedView != null)
+                    drawFileView(selectedView!!)
             }
         }
     }
@@ -91,6 +79,7 @@ object FileViewer {
 }
 data class FileView(
     val name: String,
+    val path: String,
     val nameColor: Color,
     val text: String,
 )
