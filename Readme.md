@@ -13,15 +13,13 @@ Or an object renderer could be easily implemented to render a 3d object with a c
   - [x] Tab rendering
     - [x] Tabbed file viewer
     - [x] Open from file tree
-  - [ ] Default text tab
+  - [x] Default text tab
     - [x] Load into individual lines
-    - [x] Pass lines to a callback for formatting while loading
     - [x] Draw lines with line numbers as individual text fields
     - [x] Make text box darker than the standard background
-    - [ ] When a line is edited
-      - [ ] Remove line if necessary
-      - [ ] Call a callback with the changes
-      - [ ] Save the changes after the callback is finished
+    - [x] When a line is edited
+      - [x] Remove line if necessary
+      - [x] Save the changes after the callback is finished
 - [ ] Plugin System
   - [ ] Options to add render top bar composable (gradle button for example)
   - [ ] File types list (for example .gradle and .gradle.kts for gradle plugin)
