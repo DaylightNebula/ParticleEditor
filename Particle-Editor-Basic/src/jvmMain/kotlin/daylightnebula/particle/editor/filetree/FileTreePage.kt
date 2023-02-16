@@ -32,12 +32,11 @@ import javax.swing.Icon
 object FileTreePage {
 
     @Composable
-    fun drawFileTree(targetFile: File) {
+    fun drawFileTree(targetFile: File?) {
         val openDirectories = remember { mutableListOf<String>() }
 
-        // render the tree
-        val tree = FileTree(targetFile)
-
+        // draw background box
+        Spacer(Modifier.height(5.dp))
         Box(
             modifier = Modifier
                 .fillMaxHeight()
@@ -46,7 +45,16 @@ object FileTreePage {
                 .clip(RoundedCornerShape(5.dp))
                 .background(BasicColors.elementBackground)
         ) {
+            // check if we have a target file
+            if (targetFile == null) return@Box
+
+            // setup scroll state so the file tree is scrollable
             val scrollState = rememberLazyListState()
+
+            // create a file tree
+            val tree = FileTree(targetFile)
+
+            //
             LazyColumn(
                 state = scrollState,
                 modifier = Modifier.fillMaxSize()

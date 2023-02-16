@@ -9,9 +9,11 @@ Or an object renderer could be easily implemented to render a 3d object with a c
   - [ ] Top bar with an optional list of buttons
     - [ ] Open project button
     - [ ] Reload plugins button
-  - [ ] File tree on the left side
+  - [x] File tree on the left side
   - [ ] Easy way to create overlay menus
   - [ ] Tab rendering
+    - [x] Tabbed file viewer
+    - [x] Open from file tree
     - [ ] Default text tab (find someway of making this available to plugins)
 - [ ] Plugin System
   - [ ] Options to add render top bar composable (gradle button for example)
