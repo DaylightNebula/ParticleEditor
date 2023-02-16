@@ -7,9 +7,9 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,10 +51,26 @@ object FileViewer {
                             modifier = Modifier
                                 .padding(end = 5.dp)
                         ) {
-                            Text(
-                                text = view.name,
-                                color = view.nameColor
-                            )
+                            Row {
+                                Text(
+                                    text = view.name,
+                                    color = view.nameColor
+                                )
+                                IconButton(
+                                    onClick = {
+                                        views.remove(view)
+                                        if (selectedView == view)
+                                            selectedView = views.firstOrNull()
+                                    },
+                                    modifier = Modifier
+                                        .width(18.dp)
+                                        .height(18.dp)
+                                        .align(Alignment.CenterVertically)
+                                        .padding(start = 5.dp)
+                                ) {
+                                    Icon(Icons.Filled.Close, null, tint = BasicColors.foreground)
+                                }
+                            }
                         }
                     }
                 }
