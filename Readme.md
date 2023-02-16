@@ -14,11 +14,12 @@ Or an object renderer could be easily implemented to render a 3d object with a c
     - [x] Tabbed file viewer
     - [x] Open from file tree
   - [ ] Default text tab
-    - [ ] Load into individual lines
-    - [ ] Pass lines to a callback for formatting while loading
-    - [ ] Draw lines with line numbers as individual text fields
-    - [ ] Make text box darker than the standard background
+    - [x] Load into individual lines
+    - [x] Pass lines to a callback for formatting while loading
+    - [x] Draw lines with line numbers as individual text fields
+    - [x] Make text box darker than the standard background
     - [ ] When a line is edited
+      - [ ] Remove line if necessary
       - [ ] Call a callback with the changes
       - [ ] Save the changes after the callback is finished
 - [ ] Plugin System
