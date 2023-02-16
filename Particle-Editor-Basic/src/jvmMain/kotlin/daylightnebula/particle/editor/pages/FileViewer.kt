@@ -18,6 +18,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import daylightnebula.particle.editor.BasicColors
+import daylightnebula.particle.editor.typeviews.TypeViewManager
+import java.io.File
 
 object FileViewer {
 
@@ -77,31 +79,14 @@ object FileViewer {
 
                 // create box for the plugins to draw into
                 if (selectedView != null)
-                    drawFileView(selectedView!!)
-            }
-        }
-    }
-
-    @Composable
-    fun drawFileView(view: FileView) {
-        val scrollState = rememberLazyListState()
-        LazyColumn(
-            state = scrollState,
-            modifier =
-                Modifier
-                    .fillMaxSize()
-                    .clip(RoundedCornerShape(5.dp))
-                    .background(BasicColors.elementBackground)
-        ) {
-            item {
-                Text(view.text, color = BasicColors.foreground)
+                    TypeViewManager.drawViewForFile(selectedView!!.file)
             }
         }
     }
 }
 data class FileView(
     val name: String,
-    val path: String,
+    val file: File,
     val nameColor: Color,
     val text: String,
 )

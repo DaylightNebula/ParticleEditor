@@ -60,10 +60,10 @@ class FileTree(root: File) {
                 }
                 is ItemType.File -> {
                     // try to find a preexisting view of this file
-                    var view = FileViewer.views.firstOrNull { it.path == file.file.path }
+                    var view = FileViewer.views.firstOrNull { it.file == file.file }
 
                     if (view == null) {
-                        view = FileView(file.file.name, file.file.path, BasicColors.foreground, file.file.readText())
+                        view = FileView(file.file.name, file.file, BasicColors.foreground, file.file.readText())
                         FileViewer.views.add(view)
                     }
                     FileViewer.selectedView = view

@@ -5,16 +5,22 @@ For example, a plugin for json files could be easily added that would allow for 
 Or an object renderer could be easily implemented to render a 3d object with a custom file type.
 
 === Todo List ===
-- [ ] Basic Editor
-  - [ ] Top bar with an optional list of buttons
-    - [ ] Open project button
-    - [ ] Reload plugins button
+- [x] Basic Editor
+  - [x] Top bar with an optional list of buttons
+    - [x] Open project button
   - [x] File tree on the left side
   - [ ] Easy way to create overlay menus
-  - [ ] Tab rendering
+  - [x] Tab rendering
     - [x] Tabbed file viewer
     - [x] Open from file tree
-    - [ ] Default text tab (find someway of making this available to plugins)
+  - [ ] Default text tab
+    - [ ] Load into individual lines
+    - [ ] Pass lines to a callback for formatting while loading
+    - [ ] Draw lines with line numbers as individual text fields
+    - [ ] Make text box darker than the standard background
+    - [ ] When a line is edited
+      - [ ] Call a callback with the changes
+      - [ ] Save the changes after the callback is finished
 - [ ] Plugin System
   - [ ] Options to add render top bar composable (gradle button for example)
   - [ ] File types list (for example .gradle and .gradle.kts for gradle plugin)
@@ -23,3 +29,4 @@ Or an object renderer could be easily implemented to render a 3d object with a c
   - [ ] Allow plugins to define an image to draw next to an image
   - [ ] Event when a file changes
   - [ ] Overlay menus
+  - [ ] Reload plugins button
