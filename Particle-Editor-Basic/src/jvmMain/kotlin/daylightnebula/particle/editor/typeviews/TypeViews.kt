@@ -18,13 +18,17 @@ object TypeViewManager {
     @Composable
     fun drawViewForFile(file: File) {
         // try to get a view by first check if we have a type has is registered for the extension, if none found, use default
-        val view = views.firstOrNull { it.types.contains(file.extension) } ?: defaultView
+        val view = views.firstOrNull { it.nameOverrides.contains(file.name) }
+            ?: views.firstOrNull { it.types.contains(file.extension) }
+            ?: defaultView
 
         // draw
         view.render(file)
     }
+
+    fun reset() { views.clear() }
 }
-abstract class TypeView(val types: Array<String>) {
+abstract class TypeView(val types: Array<String>, val nameOverrides: Array<String>) {
     @Composable
     abstract fun render(file: File)
 }

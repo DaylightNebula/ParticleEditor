@@ -48,7 +48,6 @@ class TextTypeView(types: Array<String>): TypeView(types) {
         if (!loadedFiles.containsKey(file)) {
             loadedFiles[file] = file.readText()
         }
-        println("Rendering ${file.path} ${loadedFiles[file]!!.replace("\n", "")}")
 
         // try to get a loaded file
         var text by remember { mutableStateOf("") }

@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.AwtWindow
 import androidx.compose.ui.window.Window
 import daylightnebula.particle.editor.BasicColors
+import daylightnebula.particle.editor.plugins.PluginManager
 import java.awt.FileDialog
 import java.awt.Frame
 import java.io.File
@@ -33,6 +34,10 @@ import javax.swing.JFileChooser
 object TopBar {
 
     private val buttons = mutableStateListOf<TopBarButton>()
+
+    fun reset() {
+        buttons.clear()
+    }
 
     fun addButton(button: TopBarButton) {
         buttons.add(button)
@@ -70,7 +75,7 @@ object TopBar {
                         }
 
                         // reload the plugins
-                        IconButton(onClick = { reloadPlugins() }) {
+                        IconButton(onClick = { PluginManager.reload() }) {
                             Icon(
                                 Icons.Filled.Refresh,
                                 "Reload Plugins",

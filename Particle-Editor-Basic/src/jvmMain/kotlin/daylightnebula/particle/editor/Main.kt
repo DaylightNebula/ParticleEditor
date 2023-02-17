@@ -16,6 +16,7 @@ import daylightnebula.particle.editor.pages.FileViewer
 import daylightnebula.particle.editor.pages.TopBar
 import daylightnebula.particle.editor.pages.TopBarButton
 import daylightnebula.particle.editor.pages.TopBarButtonOption
+import daylightnebula.particle.editor.plugins.PluginManager
 import java.io.File
 
 @Composable
@@ -40,6 +41,7 @@ fun App() {
 }
 
 fun main() = application {
+    PluginManager.init(File("plugins"))
     Window(onCloseRequest = ::exitApplication) {
         App()
     }
