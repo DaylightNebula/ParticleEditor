@@ -41,7 +41,7 @@ fun App() {
 }
 
 fun main() = application {
-    PluginManager.init(File("plugins"))
+    PluginManager.init(File(System.getProperty("user.dir"), "plugins").apply { println(this.path) })
     Window(onCloseRequest = ::exitApplication) {
         App()
     }

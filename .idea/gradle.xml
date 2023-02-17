@@ -15,11 +15,11 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/Particle-Json-Plugin" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Particle-Plugin-Json" />
         <option name="gradleJvm" value="openjdk-18" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/Particle-Json-Plugin" />
+            <option value="$PROJECT_DIR$/Particle-Plugin-Json" />
           </set>
         </option>
       </GradleProjectSettings>

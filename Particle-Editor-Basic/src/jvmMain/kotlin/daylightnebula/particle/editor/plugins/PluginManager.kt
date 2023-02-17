@@ -19,7 +19,7 @@ object PluginManager {
             pluginsFolder.mkdirs()
 
         // load all jars from the plugins folder as a plugin
-        pluginsFolder.listFiles()?.forEach { file ->
+        for (file in pluginsFolder.listFiles()!!) {
             if (file.extension == "jar")
                 loadPlugin(file)
         }
@@ -39,7 +39,7 @@ object PluginManager {
 
         // load the main class from the config
         val config = loader.getResource("plugin.config")?.readText()?.split("\n")
-            ?: return
+            ?: throw IllegalArgumentException("No plugin.config in ${file.path}")
         val mainClass = config.firstOrNull { it.startsWith("MAIN_CLASS") }?.split("=")?.last()
             ?: return
 

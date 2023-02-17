@@ -40,3 +40,7 @@ compose.desktop {
         }
     }
 }
+
+tasks.getByName<Jar>("jar") {
+    destinationDirectory.set(file("$rootDir/../libs"))
+}
