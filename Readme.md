@@ -21,11 +21,11 @@ Or an object renderer could be easily implemented to render a 3d object with a c
       - [x] Remove line if necessary
       - [x] Save the changes after the callback is finished
 - [ ] Plugin System
-  - [ ] Options to add render top bar composable (gradle button for example)
-  - [ ] File types list (for example .gradle and .gradle.kts for gradle plugin)
-  - [ ] Tab composable render function
+  - [x] Options to add render top bar composable (gradle button for example)
+  - [x] File types list (for example .gradle and .gradle.kts for gradle plugin)
+  - [x] Tab composable render function
   - [ ] Allow plugins to change color of file names in the list
   - [ ] Allow plugins to define an image to draw next to an image
   - [ ] Event when a file changes
   - [ ] Overlay menus
-  - [ ] Reload plugins button
+  - [x] Reload plugins button
