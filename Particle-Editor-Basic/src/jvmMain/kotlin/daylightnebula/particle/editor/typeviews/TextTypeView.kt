@@ -32,7 +32,7 @@ import daylightnebula.particle.editor.BasicColors
 import daylightnebula.particle.editor.pages.FileViewer
 import java.io.File
 
-class TextTypeView(types: Array<String>): TypeView(types) {
+class TextTypeView(types: Array<String>, nameOverrides: Array<String>): TypeView(types, nameOverrides) {
 
     private val loadedFiles = hashMapOf<File, String>()
 

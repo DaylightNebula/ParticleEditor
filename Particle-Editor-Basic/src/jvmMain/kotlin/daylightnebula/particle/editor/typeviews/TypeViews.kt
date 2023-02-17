@@ -10,7 +10,7 @@ import java.io.File
 
 object TypeViewManager {
     private val views = mutableListOf<TypeView>()
-    private val defaultView = TextTypeView(arrayOf())
+    private val defaultView = TextTypeView(arrayOf(), arrayOf())
 
     // to register views, simply add them to the list
     fun registerView(view: TypeView) { views.add(view) }
