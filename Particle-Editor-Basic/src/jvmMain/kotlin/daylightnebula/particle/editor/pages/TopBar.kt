@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.AwtWindow
 import androidx.compose.ui.window.Window
 import daylightnebula.particle.editor.BasicColors
+import daylightnebula.particle.editor.SettingsManager
 import daylightnebula.particle.editor.plugins.PluginManager
 import java.awt.FileDialog
 import java.awt.Frame
@@ -65,6 +66,7 @@ object TopBar {
                             val chooser = JFileChooser()
                             chooser.fileSelectionMode = JFileChooser.DIRECTORIES_ONLY
                             chooser.showOpenDialog(ComposeWindow())
+                            SettingsManager.setDirectory(chooser.selectedFile)
                             onFileSelectCallback(chooser.selectedFile)
                         }) {
                             Icon(

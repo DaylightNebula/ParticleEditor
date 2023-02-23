@@ -9,17 +9,10 @@ import daylightnebula.particle.editor.typeviews.TypeView
 
 class JsonParticlePlugin: ParticlePlugin() {
     override fun getTopBarButtons(): Array<TopBarButton> {
-        return arrayOf(
-            TopBarButton(
-                Icons.Filled.List,
-                arrayOf(
-                    TopBarButtonOption("Json") { println("Test") }
-                )
-            )
-        )
+        return arrayOf()
     }
 
     override fun getTypeViews(): Array<TypeView> {
-        return arrayOf()
+        return arrayOf(JsonTypeView())
     }
 }

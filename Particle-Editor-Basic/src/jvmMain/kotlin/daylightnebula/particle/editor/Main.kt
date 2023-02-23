@@ -21,7 +21,7 @@ import java.io.File
 
 @Composable
 fun App() {
-    var targetFile by remember { mutableStateOf<File?>(null) }
+    var targetFile by remember { mutableStateOf<File>(SettingsManager.getDirectory()) }
 
     Box(modifier = Modifier.fillMaxSize().background(BasicColors.background)) {
         Column {
