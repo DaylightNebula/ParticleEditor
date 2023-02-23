@@ -11,3 +11,8 @@ pluginManagement {
         id("org.jetbrains.compose").version(extra["compose.version"] as String)
     }
 }
+
+rootProject.name = "Particle"
+
+include("Particle-Editor-Basic")
+include("Particle-Plugin-Json")

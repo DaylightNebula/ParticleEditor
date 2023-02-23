@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    commonMainImplementation(project(mapOf("path" to ":Particle-Editor-Basic")))
     commonMainImplementation(
         fileTree("$rootDir/../Particle-Editor-Basic/build/libs/Particle-Editor-jvm-1.0-SNAPSHOT.jar")
     )
@@ -47,6 +48,12 @@ compose.desktop {
     }
 }
 
-tasks.getByName<Jar>("jar") {
-    destinationDirectory.set(file("$rootDir/../plugins"))
+tasks.getByName("build") {
+    outputs.file(file("$rootDir/plugins"))
 }
+
+tasks.withType<Jar>().last().apply {
+    destinationDirectory.set(file("$rootDir/plugins"))
+}
+
+tasks.register("prepareKotlinBuildScriptModel") {}

@@ -4,7 +4,7 @@ This is meant to be a simple open source alternative to editors like VS Code and
 For example, a plugin for json files could be easily added that would allow for completion and organize text by colors.
 Or an object renderer could be easily implemented to render a 3d object with a custom file type.
 
-=== Todo List ===
+=== Todo List (here cause Im lazy) ===
 - [x] Basic Editor
   - [x] Top bar with an optional list of buttons
     - [x] Open project button
@@ -29,3 +29,7 @@ Or an object renderer could be easily implemented to render a 3d object with a c
   - [ ] Event when a file changes
   - [ ] Overlay menus
   - [x] Reload plugins button
+- [ ] Base file types
+  - [ ] .json
+  - [ ] .properties
+- [ ] GitHub releases

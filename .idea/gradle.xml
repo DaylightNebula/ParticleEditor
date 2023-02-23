@@ -5,11 +5,25 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="openjdk-18" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Particle-Editor-Basic" />
+            <option value="$PROJECT_DIR$/Particle-Plugin-Json" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/Particle-Editor-Basic" />
         <option name="gradleJvm" value="openjdk-18" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Particle-Editor-Basic" />
+            <option value="$PROJECT_DIR$/Particle-Plugin-Json" />
           </set>
         </option>
       </GradleProjectSettings>
@@ -19,6 +33,8 @@
         <option name="gradleJvm" value="openjdk-18" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Particle-Editor-Basic" />
             <option value="$PROJECT_DIR$/Particle-Plugin-Json" />
           </set>
         </option>

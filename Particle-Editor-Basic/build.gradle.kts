@@ -42,5 +42,7 @@ compose.desktop {
 }
 
 tasks.getByName<Jar>("jar") {
-    destinationDirectory.set(file("$rootDir/../libs"))
+    destinationDirectory.set(file("$rootDir/libs"))
 }
+
+tasks.register("prepareKotlinBuildScriptModel") {}

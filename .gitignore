@@ -1,3 +1,5 @@
 /.idea/
 /plugins/
 /libs/
+/gradlew
+/gradlew.bat
